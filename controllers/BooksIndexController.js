@@ -3,3 +3,6 @@ angular.module('libraryApp')
 
 // add your BooksIndexController function here!
 // don't forget $http if you need to make requests
+function BooksIndexController (){
+  console.log('books!')
+}
