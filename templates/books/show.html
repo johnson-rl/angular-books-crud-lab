@@ -4,14 +4,28 @@
   <div class="col-xs-12">
     <img class="img-responsive col-xs-8" ng-src={{booksShowCtrl.book.image}} alt="{{ booksShowCtrl.book.title }}">
     <div class="col-xs-4">
-      <p>{{booksShowCtrl.book._id}}</p>
+      <p ng-hide="editing">{{booksShowCtrl.book._id}}</p>
       <!-- <h3><a href={{"/books/"+book._id}}>{{book.title}}</a></h3> -->
       <br>
       <br>
-      <h5>Written by:</h5>
-      <h4>{{booksShowCtrl.book.author}}</h4>
-      <h5>First Published:</h5>
-      <h4>{{booksShowCtrl.book.releaseDate}}</h4>
+      <input ng-show="editing" ng-model="booksShowCtrl.book.title" type="text" name="" value="">
+      <h5 ng-hide="editing">Written by:</h5>
+      <h4 ng-hide="editing">{{booksShowCtrl.book.author}}</h4>
+      <input ng-show="editing" ng-model="booksShowCtrl.book.author" type="text" name="" value="">
+      <h5 ng-hide="editing">First Published:</h5>
+      <h4 ng-hide="editing">{{booksShowCtrl.book.releaseDate}}</h4>
+      <input ng-show="editing" ng-model="booksShowCtrl.book.releaseDate" type="text" name="" value="">
+      <br>
+      <br>
+      <button class="btn btn-md btn-primary" ng-hide="editing" ng-click="editing=true">Edit</button>
+      <button class="btn btn-md btn-success" ng-show="editing" ng-click="editing=false; booksShowCtrl.editBook(booksShowCtrl.book)">Save</button>
+      <button ng-hide="editing" class="btn btn-md btn-danger" ng-click="booksShowCtrl.deleteBook(booksShowCtrl.book)">Delete</button>
+      <button ng-show="editing" class="btn btn-md btn-danger" ng-click="editing=false; booksShowCtrl.loadBook()">Cancel</button>
+    </div>
+    <div class="row">
+      <div clas="col-xs-6 col-offset-3">
+        <button class="btn btn-md btn-primary" ng-click="booksShowCtrl.loadLibrary()">Back to Library</button>
+      </div>
     </div>
   </div>
 </div>
