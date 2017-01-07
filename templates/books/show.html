@@ -1,10 +1,17 @@
 <h2>{{booksShowCtrl.book.title}}</h2>
 <hr>
 <div class="row">
-	<!-- Here, add the display of the book info,
-       the buttons for editing or deleting,
-       the form and buttons that will show if you
-       click edit. Don't forget that all of those
-       buttons and forms will need some angular
-       functionality! -->
+  <div class="col-xs-12">
+    <img class="img-responsive col-xs-8" ng-src={{booksShowCtrl.book.image}} alt="{{ booksShowCtrl.book.title }}">
+    <div class="col-xs-4">
+      <p>{{booksShowCtrl.book._id}}</p>
+      <!-- <h3><a href={{"/books/"+book._id}}>{{book.title}}</a></h3> -->
+      <br>
+      <br>
+      <h5>Written by:</h5>
+      <h4>{{booksShowCtrl.book.author}}</h4>
+      <h5>First Published:</h5>
+      <h4>{{booksShowCtrl.book.releaseDate}}</h4>
+    </div>
+  </div>
 </div>

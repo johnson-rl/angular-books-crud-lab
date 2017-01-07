@@ -1,7 +1,20 @@
 <h2>Library Books</h2>
-<div ng-repeat="book in booksIndexCtrl.books">
-  <img src={{book.image}} alt="">
-  <div>
-
+<div class="row">
+  <hr>
+  <div ng-repeat="book in booksIndexCtrl.books">
+    <div class="col-xs-12">
+      <img class="img-responsive col-xs-6" ng-src={{book.image}} alt={{book.title + "cover page"}}>
+      <div class="col-xs-6">
+        <p>{{book._id}}</p>
+        <h3><a href={{"/books/"+book._id}}>{{book.title}}</a></h3>
+        <br>
+        <br>
+        <h5>{{"Written by " + book.author}}</h5>
+        <h5>{{book.releaseDate}}</h4>
+      </div>
+    </div>
+    <div class = "col-xs-12">
+      <br>
+    </div>
   </div>
 </div>
