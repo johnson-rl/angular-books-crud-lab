@@ -3,17 +3,30 @@
   Sort by:
   <button type="button" class = "btn btn-default btn-md" ng-click="order = 'title'">Title</button>
   <button type="button" class = "btn btn-default btn-md" ng-click="order = 'author'">Author</button>
+  Add a book:
+  <button type="button" class = "btn btn-warning btn-md" ng-click="adding = true">New</button>
 </div>
   <hr>
   <input type="text" class="form-control" ng-model="searchText" placeholder="Search Books">
       <!-- <div ng-repeat="album in albumsIndexCtrl.albums | orderBy: 'name' | filter: searchText" class="row"> -->
   <hr>
 <div class="row">
+  <div ng-show="adding">
+    <img class="img-responsive col-xs-6" ng-src={{booksIndexCtrl.newBook.image}} alt={{booksIndexCtrl.newBook.title + "cover page"}}>
+    <div class="col-xs-6">
+      <input ng-model="booksIndexCtrl.newBook.title" type="text" placeholder="Title"><br>
+      <input ng-model="booksIndexCtrl.newBook.author" type="text" placeholder="Author"><br>
+      <input ng-model="booksIndexCtrl.newBook.releaseDate" type="text" placeholder="Date"><br>
+      <input ng-model="booksIndexCtrl.newBook.image" type="text" placeholder="Image URL"><br>
+      <button class="btn btn-md btn-success" ng-click="adding=false; booksIndexCtrl.saveBook(booksIndexCtrl.newBook)">Save</button>
+      <button class="btn btn-md btn-danger" ng-click="adding=false">Cancel</button>
+    </div>
+  </div>
   <div ng-repeat="book in booksIndexCtrl.books | filter: searchText | orderBy: order">
-    <div class="col-xs-12">
+    <div class="col-xs-12" ng-hide="adding">
       <img class="img-responsive col-xs-6" ng-src={{book.image}} alt={{book.title + "cover page"}}>
       <div class="col-xs-6">
-        <p>{{book._id}}</p>
+        <p><a href={{"/books/"+book._id}}>{{book._id}}</a></p>
         <h3><a href={{"/books/"+book._id}}>{{book.title}}</a></h3>
         <br>
         <br>
